@@ -22,25 +22,25 @@ public class CustomerActivationService {
 //	}
 	
 //  --- INJECTION POINT 3 ---
-//	@Autowired(required = false)
-//	private Notificator notificator;
+	@Autowired(required = false)
+	private Notificator notificator;
 
-	@Autowired
-	private List<Notificator> notificators;
+//	@Autowired
+//	private List<Notificator> notificators;
 
 	
 	public void activate(Customer customer) {
 		customer.activate();
 		
-		for (Notificator notificator : notificators) {
-			notificator.notificate(customer, "Your registration on the platform is active!");
-		}
-		
-//		if (notificator != null) {
+//		for (Notificator notificator : notificators) {
 //			notificator.notificate(customer, "Your registration on the platform is active!");
-//		}	else {
-//			System.out.println("There isn't a notificator, but the customer have been activated.");
 //		}
+		
+		if (notificator != null) {
+			notificator.notificate(customer, "Your registration on the platform is active!");
+		}	else {
+			System.out.println("There isn't a notificator, but the customer have been activated.");
+		}
 		
 	}
 
