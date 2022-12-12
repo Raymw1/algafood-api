@@ -9,7 +9,7 @@ import com.api.algafood.notification.Notificator;
 @Component
 public class CustomerActivationService {
 //  --- INJECTION POINT 3 ---
-	@Autowired
+	@Autowired(required = false)
 	private Notificator notificator;
 
 	
@@ -26,7 +26,12 @@ public class CustomerActivationService {
 	public void activate(Customer customer) {
 		customer.activate();
 		
-		notificator.notificate(customer, "Your registration on the platform is active!");
+		if (notificator != null) {
+			notificator.notificate(customer, "Your registration on the platform is active!");
+		}	else {
+			System.out.println("There isn't a notificator, but the customer have been activated.");
+		}
+		
 	}
 
 	
