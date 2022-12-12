@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import com.api.algafood.model.Customer;
 import com.api.algafood.notification.Notificator;
+import com.api.algafood.notification.NotificatorType;
+import com.api.algafood.notification.UrgencyLevel;
 
 @Component
 public class CustomerActivationService {
@@ -23,7 +25,7 @@ public class CustomerActivationService {
 //	}
 	
 //  --- INJECTION POINT 3 ---
-	@Qualifier("normal")
+	@NotificatorType(UrgencyLevel.URGENT)
 	@Autowired(required = false)
 	private Notificator notificator;
 
