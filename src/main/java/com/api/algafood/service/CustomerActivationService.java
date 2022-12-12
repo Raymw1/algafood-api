@@ -3,6 +3,7 @@ package com.api.algafood.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.api.algafood.model.Customer;
@@ -22,6 +23,7 @@ public class CustomerActivationService {
 //	}
 	
 //  --- INJECTION POINT 3 ---
+	@Qualifier("normal")
 	@Autowired(required = false)
 	private Notificator notificator;
 

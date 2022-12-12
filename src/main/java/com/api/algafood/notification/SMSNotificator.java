@@ -1,10 +1,12 @@
 package com.api.algafood.notification;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.api.algafood.model.Customer;
 
 @Component
+@Qualifier("urgency")
 public class SMSNotificator implements Notificator {
 	
 	public SMSNotificator() {

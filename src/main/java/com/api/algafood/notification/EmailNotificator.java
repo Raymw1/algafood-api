@@ -1,6 +1,5 @@
 package com.api.algafood.notification;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import com.api.algafood.model.Customer;
