@@ -1,7 +1,10 @@
 package com.api.algafood.notification;
 
+import org.springframework.stereotype.Component;
+
 import com.api.algafood.model.Customer;
 
+//@Component
 public class EmailNotificator implements Notificator {
 
 	private boolean uppercase;
