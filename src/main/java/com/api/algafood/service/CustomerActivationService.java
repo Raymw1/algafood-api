@@ -3,12 +3,17 @@ package com.api.algafood.service;
 import org.springframework.stereotype.Component;
 
 import com.api.algafood.model.Customer;
-import com.api.algafood.notification.EmailNotificator;
+import com.api.algafood.notification.Notificator;
 
 @Component
 public class CustomerActivationService {
-	private EmailNotificator notificator;
-	
+	private Notificator notificator;
+
+	public CustomerActivationService(Notificator notificator) {
+		this.notificator = notificator;
+		System.out.println("CustomerActivationService constructor!" + notificator);
+	}
+
 	public void activate(Customer customer) {
 		customer.activate();
 		
