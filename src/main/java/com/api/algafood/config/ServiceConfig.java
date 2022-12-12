@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import com.api.algafood.notification.Notificator;
 import com.api.algafood.service.CustomerActivationService;
 
-@Configuration
+//@Configuration
 public class ServiceConfig {
 
-	@Bean
-	public CustomerActivationService customerActivationService(Notificator notificator) {
-		return new CustomerActivationService(notificator);
-	}
+//	@Bean
+//	public CustomerActivationService customerActivationService(Notificator notificator) {
+//		return new CustomerActivationService(notificator);
+//	}
 }

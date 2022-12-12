@@ -14,7 +14,6 @@ public class MyFirstController {
 
 	public MyFirstController(CustomerActivationService customerActivationService) {
 		this.customerActivationService = customerActivationService;
-		System.out.println("MyFirstController constructor!" + customerActivationService);
 	}
 	
 	@GetMapping("/hello")

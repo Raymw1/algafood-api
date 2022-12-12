@@ -16,8 +16,8 @@ public class AlgaConfig {
 		return notificator;
 	}
 	
-	@Bean
-	public CustomerActivationService customerActivationService() {
-		return new CustomerActivationService(emailNotificator());
-	}
+//	@Bean
+//	public CustomerActivationService customerActivationService() {
+//		return new CustomerActivationService(emailNotificator());
+//	}
 }

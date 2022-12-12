@@ -9,7 +9,6 @@ public class EmailNotificator implements Notificator {
 	
 	public EmailNotificator(String smtpServerHost) {
 		this.smtpServerHost = smtpServerHost;
-		System.out.println("EmailNotificator constructor!");
 	}
 	
 	@Override
