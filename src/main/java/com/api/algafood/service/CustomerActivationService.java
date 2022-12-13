@@ -7,6 +7,7 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import com.api.algafood.model.Customer;
@@ -28,15 +29,20 @@ public class CustomerActivationService {
 //	}
 	
 //  --- INJECTION POINT 3 ---
-	@NotificatorType(UrgencyLevel.NORMAL)
-	@Autowired(required = false)
-	private Notificator notificator;
+//	@NotificatorType(UrgencyLevel.NORMAL)
+//	@Autowired(required = false)
+//	private Notificator notificator;
+	
 //	@Autowired
 //	private List<Notificator> notificators;
 	
+	
+	@Autowired
+	private ApplicationEventPublisher eventPublisher;
+	
 	@PostConstruct
 	public void init() {
-		System.out.println("INIT SERVICE " + notificator);
+		System.out.println("INIT SERVICE");
 	}
 
 	@PreDestroy
@@ -47,15 +53,18 @@ public class CustomerActivationService {
 	public void activate(Customer customer) {
 		customer.activate();
 		
+		eventPublisher.publishEvent(new ActivatedCustomerEvent(customer));
+		
+		
 //		for (Notificator notificator : notificators) {
 //			notificator.notificate(customer, "Your registration on the platform is active!");
 //		}
 		
-		if (notificator != null) {
-			notificator.notificate(customer, "Your registration on the platform is active!");
-		}	else {
-			System.out.println("There isn't a notificator, but the customer have been activated.");
-		}
+//		if (notificator != null) {
+//			notificator.notificate(customer, "Your registration on the platform is active!");
+//		}	else {
+//			System.out.println("There isn't a notificator, but the customer have been activated.");
+//		}
 		
 	}
 
