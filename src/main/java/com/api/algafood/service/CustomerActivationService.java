@@ -25,7 +25,7 @@ public class CustomerActivationService {
 //	}
 	
 //  --- INJECTION POINT 3 ---
-	@NotificatorType(UrgencyLevel.URGENT)
+	@NotificatorType(UrgencyLevel.NORMAL)
 	@Autowired(required = false)
 	private Notificator notificator;
 
