@@ -14,18 +14,19 @@ import com.api.algafood.notification.UrgencyLevel;
 @Configuration
 public class NotificationConfig {
 
+	@Profile("prod")
 	@Bean
 //	@Primary
 //	@Qualifier("normal")
 	@NotificatorType(UrgencyLevel.NORMAL)
-	@Profile("prod")
 	public EmailNotificator emailNotificator() {
 		EmailNotificator notificator = new EmailNotificator("smtp.rayanmail.com.br");
 		notificator.setUppercase(false);
 		return notificator;
 	}
 	
-	@Bean
+	@Profile("dev")
+	@Bean(initMethod = "init", destroyMethod = "destroy")
 	public EmailNotificatorMock emailNotificatorMock() {
 		EmailNotificatorMock notificator = new EmailNotificatorMock("smtp.rayanmail.com.br");
 		notificator.setUppercase(false);

@@ -7,7 +7,6 @@ import com.api.algafood.model.Customer;
 
 //@Component
 @NotificatorType(UrgencyLevel.NORMAL)
-@Profile("dev")
 public class EmailNotificatorMock implements Notificator {
 
 	private boolean uppercase;
@@ -15,7 +14,14 @@ public class EmailNotificatorMock implements Notificator {
 	
 	public EmailNotificatorMock(String smtpServerHost) {
 		this.smtpServerHost = smtpServerHost;
-		System.out.println("EmailNotificator MOCK!");
+	}
+	
+	public void init() {
+		System.out.println("INIT NOTIFICATOR");
+	}
+	
+	public void destroy() {
+		System.out.println("DESTROY NOTIFICATOR");
 	}
 	
 	@Override
