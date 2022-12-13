@@ -2,6 +2,9 @@ package com.api.algafood.service;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -28,10 +31,18 @@ public class CustomerActivationService {
 	@NotificatorType(UrgencyLevel.NORMAL)
 	@Autowired(required = false)
 	private Notificator notificator;
-
 //	@Autowired
 //	private List<Notificator> notificators;
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("INIT SERVICE " + notificator);
+	}
 
+	@PreDestroy
+	public void destroy() {
+		System.out.println("DESTROY SERVICE");
+	}
 	
 	public void activate(Customer customer) {
 		customer.activate();
