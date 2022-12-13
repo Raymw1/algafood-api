@@ -14,7 +14,7 @@ import com.api.algafood.notification.UrgencyLevel;
 @Configuration
 public class NotificationConfig {
 
-	@Profile("prod")
+	@Profile("production")
 	@Bean
 //	@Primary
 //	@Qualifier("normal")
@@ -25,7 +25,7 @@ public class NotificationConfig {
 		return notificator;
 	}
 	
-	@Profile("dev")
+	@Profile("development")
 	@Bean(initMethod = "init", destroyMethod = "destroy")
 	public EmailNotificatorMock emailNotificatorMock() {
 		EmailNotificatorMock notificator = new EmailNotificatorMock("smtp.rayanmail.com.br");
