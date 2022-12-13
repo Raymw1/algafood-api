@@ -2,6 +2,7 @@ package com.api.algafood.notification;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.api.algafood.model.Customer;
@@ -10,10 +11,15 @@ import com.api.algafood.model.Customer;
 public class EmailNotificator implements Notificator, InitializingBean, DisposableBean {
 
 	private boolean uppercase;
-	private String smtpServerHost;
 	
-	public EmailNotificator(String smtpServerHost) {
-		this.smtpServerHost = smtpServerHost;
+	@Value("${notificator.email.server-host}")
+	private String serverHost;
+	
+	@Value("${notificator.email.server-port}")
+	private Integer serverPort;
+	
+	public EmailNotificator(String serverHost) {
+		this.serverHost = serverHost;
 	}
 	
 	@Override
@@ -22,8 +28,12 @@ public class EmailNotificator implements Notificator, InitializingBean, Disposab
 			message = message.toUpperCase();
 		}
 		
+		System.out.println("Host: " + serverHost);
+
+		System.out.println("Port: " + serverPort);
+		
 		System.out.printf("Notifying %s by the email %s using SMTP %s: %s\n",
-				customer.getName(), customer.getEmail(), this.smtpServerHost, message
+				customer.getName(), customer.getEmail(), this.serverHost, message
 		);
 	}
 
