@@ -20,7 +20,7 @@ public class NotificationConfig {
 //	@Qualifier("normal")
 	@NotificatorType(UrgencyLevel.NORMAL)
 	public EmailNotificator emailNotificator() {
-		EmailNotificator notificator = new EmailNotificator("smtp.rayanmail.com.br");
+		EmailNotificator notificator = new EmailNotificator();
 		notificator.setUppercase(false);
 		return notificator;
 	}

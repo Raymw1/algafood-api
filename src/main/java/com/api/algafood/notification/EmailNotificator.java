@@ -2,6 +2,7 @@ package com.api.algafood.notification;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,15 +13,14 @@ public class EmailNotificator implements Notificator, InitializingBean, Disposab
 
 	private boolean uppercase;
 	
-	@Value("${notificator.email.server-host}")
-	private String serverHost;
+//	@Value("${notificator.email.server-host}")
+//	private String serverHost;
+//	
+//	@Value("${notificator.email.server-port}")
+//	private Integer serverPort;
 	
-	@Value("${notificator.email.server-port}")
-	private Integer serverPort;
-	
-	public EmailNotificator(String serverHost) {
-		this.serverHost = serverHost;
-	}
+	@Autowired
+	private NotificatorProperties properties;
 	
 	@Override
 	public void notificate(Customer customer, String message) {
@@ -28,12 +28,12 @@ public class EmailNotificator implements Notificator, InitializingBean, Disposab
 			message = message.toUpperCase();
 		}
 		
-		System.out.println("Host: " + serverHost);
+		System.out.println("Host: " + properties.getServerHost());
 
-		System.out.println("Port: " + serverPort);
+		System.out.println("Port: " + properties.getServerPort());
 		
 		System.out.printf("Notifying %s by the email %s using SMTP %s: %s\n",
-				customer.getName(), customer.getEmail(), this.serverHost, message
+				customer.getName(), customer.getEmail(), properties.getServerHost(), message
 		);
 	}
 

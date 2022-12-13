@@ -11,7 +11,7 @@ public class AlgaConfig {
 
 	@Bean
 	public EmailNotificator emailNotificator() {
-		EmailNotificator notificator = new EmailNotificator("smtp.rayanmail.com.br");
+		EmailNotificator notificator = new EmailNotificator();
 		notificator.setUppercase(false);
 		return notificator;
 	}
